@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Bùi Huỳnh Nhãn" />
+    <title>Sự kiện sắp diễn ra - EduHub Web</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="index.html">EduHub Web</a>
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        menu
+      </button>
+      <nav id="main-nav" class="main-nav">
+        <ul class="menu">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="index.html">Sự kiện</a></li>
+          <li><a href="register.html">Đăng ký</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Sự kiện sắp diễn ra</h1>
+
+      <form id="search-form">
+        <label for="keyword" class="sr-only">Từ khoá</label>
+        <input
+          type="search"
+          id="keyword"
+          name="keyword"
+          placeholder="Tìm sự kiện..."
+        />
+        <button type="submit">Tìm</button>
+      </form>
+
+      <p id="status"></p>
+
+      <div id="event-list">
+        <article class="card">
+          <img src="img/event.svg" alt="Hình minh hoạ Workshop Git & GitHub" />
+          <h2>
+            <a href="event-detail.html?id=22222222-2222-4222-8222-000000000001"
+              >Workshop Git &amp; GitHub cho tân sinh viên</a
+            >
+          </h2>
+          <p>
+            <time datetime="2026-09-12T01:00:00.000Z">08:00 12/09/2026</time>
+          </p>
+          <p>Phòng máy A3.201</p>
+          <p>Còn 12/40 chỗ</p>
+        </article>
+
+        <article class="card">
+          <img src="img/event.svg" alt="Hình minh hoạ Hackathon EduHub" />
+          <h2>
+            <a href="event-detail.html?id=22222222-2222-4222-8222-000000000004"
+              >Hackathon EduHub 24 giờ</a
+            >
+          </h2>
+          <p>
+            <time datetime="2026-12-19T01:00:00.000Z">08:00 19/12/2026</time>
+          </p>
+          <p>Phòng máy A3.205</p>
+          <p><span class="badge-full">Hết chỗ</span></p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 EduHub Web - Bùi Huỳnh Nhãn</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

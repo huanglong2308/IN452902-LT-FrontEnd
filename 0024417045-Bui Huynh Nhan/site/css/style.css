@@ -1,0 +1,362 @@
+/* ========================================================
+   Bùi Huỳnh Nhãn - MSSV: 0024417045
+   Môn: Lập trình Front End (IN4529) - Bài kiểm tra Ch 1-3
+   ======================================================== */
+
+/* Câu 1b: Khai báo biến trong :root */
+:root {
+  --color-primary: #006cb4;
+  --color-danger: #e40c24;
+  --color-primary-dark: #004d80;
+  --color-primary-light: #258cdb;
+  --color-primary-bg: #eaf3fb;
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-border: #cbd5e1;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset box-sizing: border-box cho mọi phần tử */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Đầu trang dùng Flexbox: logo trái, menu phải */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.logo:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Nút menu toggle trên mobile */
+.menu-toggle {
+  display: block;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.main-nav {
+  display: none;
+  width: 100%;
+}
+
+.main-nav.open {
+  display: block;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* Header trên màn hình từ 768px trở lên */
+@media (min-width: 768px) {
+  .site-header {
+    padding: var(--space-md) var(--space-xl);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    display: block;
+    width: auto;
+  }
+
+  .menu {
+    flex-direction: row;
+    gap: var(--space-sm);
+    margin: 0;
+  }
+
+  .menu a {
+    padding: 6px 14px;
+  }
+}
+
+/* Thân trang main */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: var(--space-xl);
+  }
+}
+
+h1 {
+  margin: 0 0 var(--space-lg);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+/* Form tìm kiếm */
+#search-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #search-form {
+    max-width: 600px;
+  }
+}
+
+#search-form input[type="search"] {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 0.95rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+#search-form input[type="search"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 108, 180, 0.2);
+}
+
+#search-form button {
+  padding: 10px 22px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease;
+}
+
+#search-form button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+#status {
+  min-height: 24px;
+  margin: 0 0 var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Danh sách card theo Grid mobile-first: 1 cột; từ 768px: 2 cột; từ 1200px: 3 cột */
+#event-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  #event-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  #event-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card có viền, bo góc, khoảng đệm */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+}
+
+/* Ảnh không tràn card */
+.card img {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background-color: var(--color-primary-bg);
+}
+
+.card h2 {
+  margin: var(--space-md) var(--space-md) var(--space-xs);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8em;
+}
+
+.card h2 a {
+  color: var(--color-text);
+}
+
+.card h2 a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.card p {
+  margin: 4px var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.card time {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.card p:last-child {
+  margin-top: auto;
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+/* Nhãn “Hết chỗ” chữ trắng nền màu cảnh báo */
+.badge-full {
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: var(--color-danger);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Chân trang */
+.site-footer {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
